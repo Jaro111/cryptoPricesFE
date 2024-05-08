@@ -1,29 +1,20 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { createContext } from "react";
 import React from "react";
-import { getRequest } from "./utils";
 import "./App.css";
+import { Navbar } from "./components/Navbar/Navbar";
+import { Footer } from "./components/Footer/Footer";
 import { CryptoSpace } from "./components/CryptoSpace/CryptoSpace";
 
 function App() {
-  const [data, setData] = useState([]);
-
-  const currencies = async () => {
-    const coins = await getRequest();
-    setData(coins);
-  };
-
-  useEffect(() => {
-    currencies();
-  }, []);
-
   return (
     <>
-      <div>
-        {data.map((item, index) => {
-          return <p key={index}>{item.name}</p>;
-        })}
-      </div>
+      <Navbar />
+
+      <CryptoSpace />
+
+      <Footer />
     </>
   );
 }

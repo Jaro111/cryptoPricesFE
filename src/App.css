@@ -1,6 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@300;400;500;600;700&display=swap");
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  font-family: "Hind Guntur", sans-serif;
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0),
+    rgb(151, 151, 151),
+    rgb(0, 0, 0)
+  );
+  color: greenyellow;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
