@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@300;400;500;600;700&display=swap");
 #root {
-  font-style: arial;
-  background-color: black;
+  font-family: "Hind Guntur", sans-serif;
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0),
+    rgb(151, 151, 151),
+    rgb(0, 0, 0)
+  );
   color: greenyellow;
   width: 100%;
   overflow-x: hidden;

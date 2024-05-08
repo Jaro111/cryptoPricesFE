@@ -2,22 +2,43 @@ import React, { useEffect } from "react";
 import "./coinCard.css";
 
 export const CoinCard = (props) => {
+  const click = () => {
+    console.log(click);
+  };
+
+  const colorFunc = (value) => {
+    if (Math.round(value) > 0) {
+      return "rgb(25, 243, 36)";
+    } else if (value === 0) {
+      return "grey";
+    } else {
+      return "red";
+    }
+  };
   return (
-    <div
-      className="CoinCard"
-      style={{ "background-color": props.pChange24 > 0 ? "green" : "red" }}
+    <button
+      className="coinButton"
+      style={{
+        backgroundColor: colorFunc(props.pChange24),
+        // props.pChange24 > 0 || props.pChange24 === 0
+        //   ? "rgb(59, 253, 0)"
+        //   : "red",
+      }}
+      onClick={() => click()}
     >
-      <img className="coinLogo" src={props.logo}></img>
-      <p className="tickerCont">{props.ticker}</p>
-      <p className="priceContent">
-        {props.price > 0.1
-          ? Math.round(props.price * 100) / 100
-          : Math.round(props.price * 10 ** 10) / 10 ** 10}{" "}
-        $
-      </p>
-      <p className="priceCahngesCont">24H PRICE CHANGE: </p>
-      <p className="priceCahnges">{Math.round(props.pChange24)} %</p>
-    </div>
+      <div className="CoinCard">
+        <img className="coinLogo" src={props.logo}></img>
+        <p className="rankCont">{props.rank}</p>
+        <p className="tickerCont">{props.ticker}</p>
+        <p className="priceContent">
+          {props.price > 0.1
+            ? Math.round(props.price * 100) / 100
+            : Math.round(props.price * 10 ** 10) / 10 ** 8}{" "}
+          $
+        </p>
+        <p className="priceChnges">{Math.round(props.pChange24 * 10) / 10} %</p>
+      </div>
+    </button>
   );
 };
 

@@ -1,43 +1,57 @@
 .CoinCard {
+  border: none;
+  border-radius: 90px;
+  width: 100%;
+  height: 100%;
+  border-radius: 90px;
   box-sizing: border-box;
-  width: 700px;
-  height: 800px;
-  border: 1px solid blueviolet;
-  border-radius: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+}
+
+.coinButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 140px;
+  border-radius: 90px;
+  border: 3px solid rgba(12, 11, 11, 0.836);
+  margin: 5px;
+  padding: 0;
+}
+.coinButton:hover {
+  cursor: pointer;
 }
 
 .tickerCont {
   color: black;
-  font-size: 100px;
+  font-size: 18px;
   font-weight: 900;
-  margin: 40px;
+  margin: 1px;
 }
 
+.rankCont {
+  margin: 1px;
+}
 .priceContent {
   color: black;
-  font-size: 100px;
+  font-size: 18px;
   font-weight: 900;
-  margin: 10px;
+  margin: 2px;
 }
 
-.priceCahngesCont {
-  margin: 2px;
-  font-size: 60px;
+.priceChnges {
+  margin: 1px;
   font-weight: 900;
-  color: rgb(57, 12, 92);
-}
-.priceCahnges {
-  margin: 5px;
-  font-weight: 900;
-  font-size: 120px;
+  font-size: 18px;
   color: rgb(0, 0, 0);
 }
 .coinLogo {
-  width: 200px;
-  height: 200px;
+  margin: 1px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
 }
