@@ -1,21 +1,19 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { createContext } from "react";
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar } from "./components/Navbar/Navbar";
-import { Footer } from "./components/Footer/Footer";
-import { CryptoSpace } from "./components/CryptoSpace/CryptoSpace";
+import { Home } from "./pages/Home";
+import { Portfolio } from "./pages/Portfolio";
+import { CoinPage } from "./pages/CoinPage";
 
 function App() {
   return (
-    <>
-      <Navbar />
-
-      <CryptoSpace />
-
-      <Footer />
-    </>
+    <BrowserRouter basename="">
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/coinPage" element={<CoinPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
