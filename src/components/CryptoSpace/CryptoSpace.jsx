@@ -16,6 +16,7 @@ export const CryptoSpace = () => {
   //
 
   const clickCoin = (item) => {
+    console.log(item);
     navigate("./CoinPage", { state: item });
   };
 

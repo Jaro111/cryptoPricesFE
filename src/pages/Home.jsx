@@ -6,11 +6,7 @@ import { Footer } from "../components/Footer/Footer";
 export const Home = () => {
   return (
     <>
-      <Navbar />
-
       <CryptoSpace />
-
-      <Footer />
     </>
   );
 };

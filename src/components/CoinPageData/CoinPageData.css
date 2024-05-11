@@ -1,0 +1,128 @@
+.coinDataSpace {
+  width: 90%;
+  height: 80%;
+  border: 1px solid white;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+}
+
+.dataContainer {
+  width: 70%;
+  height: 95%;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.coinNav {
+  width: 80%;
+  height: auto;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.logoSpace {
+  width: 200px;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  font-size: 40px;
+  font-weight: 500;
+}
+.coinLogoData {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.priceSpace {
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 500;
+}
+.priceContContainer {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nameCont {
+  height: 60px;
+  margin: 0;
+  padding: 0;
+}
+.priceContData {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------------CONTENT DATA ------------------------ */
+.detailContainer {
+  width: 90%;
+  height: 85%;
+
+  box-sizing: border-box;
+}
+.coinDetails {
+  width: 96%;
+  height: 40%;
+
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.capSupplyVol {
+  width: 40%;
+  height: 90%;
+
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+
+  flex-direction: row;
+}
+/* .coinDetailsContainer {
+  
+} */
+.coinDetailsContentQ {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgb(197, 195, 195);
+}
+.coinDetailsContentA {
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  border-bottom: 1px solid rgb(197, 195, 195);
+}
+
+.chainEtc {
+  width: 45%;
+  height: 90%;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.links {
+  width: 96%;
+  height: 25%;
+  border: 1px solid black;
+  box-sizing: border-box;
+}

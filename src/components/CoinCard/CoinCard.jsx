@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { priceFunc } from "../../priceFunc";
 import "./coinCard.css";
 
 export const CoinCard = (props) => {
@@ -21,13 +22,10 @@ export const CoinCard = (props) => {
         <img className="coinLogo" src={props.logo}></img>
         <p className="rankCont">{props.rank}</p>
         <p className="tickerCont">{props.ticker}</p>
-        <p className="priceContent">
-          {props.price > 0.1
-            ? Math.round(props.price * 100) / 100
-            : Math.round(props.price * 10 ** 10) / 10 ** 8}{" "}
-          $
+        <p className="priceContent">${priceFunc(props.price)}</p>
+        <p className="priceChnges">
+          {Math.round(props.pChange24 * 100) / 100} %
         </p>
-        <p className="priceChnges">{Math.round(props.pChange24 * 10) / 10} %</p>
       </div>
     </button>
   );
