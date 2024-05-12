@@ -11,22 +11,23 @@ export const CoinCard = (props) => {
     }
   };
   return (
-    <button
-      className="coinButton"
-      style={{
-        backgroundColor: colorFunc(props.pChange24),
-      }}
-      onClick={props.clickCoin}
-    >
-      <div className="CoinCard">
-        <img className="coinLogo" src={props.logo}></img>
-        <p className="rankCont">{props.rank}</p>
+    <div className="CoinCard">
+      <button
+        className="coinButton"
+        style={{
+          backgroundColor: colorFunc(props.pChange24),
+        }}
+        onClick={props.clickCoin}
+      >
+        <p className="rankCont">{props.rank}.</p>
         <p className="tickerCont">{props.ticker}</p>
+        <img className="coinLogo" src={props.logo}></img>
+
         <p className="priceContent">${priceFunc(props.price)}</p>
         <p className="priceChnges">
-          {Math.round(props.pChange24 * 100) / 100} %
+          {Math.round(props.pChange24 * 100) / 100}%
         </p>
-      </div>
-    </button>
+      </button>
+    </div>
   );
 };

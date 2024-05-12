@@ -9,7 +9,7 @@ export const CryptoSpace = () => {
   const [coin, setCoin] = useState({});
 
   const currencies = async () => {
-    const coins = await getRequest(1, 50);
+    const coins = await getRequest(1, 100);
     setData(coins);
   };
   const navigate = useNavigate();
