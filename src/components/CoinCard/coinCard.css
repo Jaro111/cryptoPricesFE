@@ -1,55 +1,79 @@
 .CoinCard {
   border: none;
-  width: 80px;
-  height: 100%;
+  width: 370px;
+  height: 40px;
   border-radius: 90px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .coinButton {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 190px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   border: 3px solid rgba(12, 11, 11, 0.836);
-  margin: 5px;
+  margin: 0;
   padding: 0;
+  background-color: rgb(206, 240, 240);
 }
-.coinButton:hover {
-  cursor: pointer;
+
+.tickerDiv {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding: 5px;
+}
+.rankCont {
+  font-size: 15px;
+  font-weight: 900;
 }
 
 .tickerCont {
   color: black;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 900;
-  margin: 1px;
 }
 
-.rankCont {
-  margin: 1px;
+.coinLogo {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  background-color: transparent;
+  right: 230px;
+}
+.colorDiv {
+  border: 1px solid black;
+  position: absolute;
+  height: 100%;
+  width: 55%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  right: 0;
 }
 .priceContent {
   color: black;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 900;
-  margin: 2px;
+  margin-left: 5px;
 }
 
 .priceChnges {
-  margin: 1px;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 15px;
   color: rgb(0, 0, 0);
-}
-.coinLogo {
-  margin: 1px;
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
+  margin-right: 5px;
 }
