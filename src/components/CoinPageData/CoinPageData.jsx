@@ -3,15 +3,15 @@ import { useState } from "react";
 import { priceFunc } from "../../priceFunc";
 import "./CoinPageData.css";
 import { DropMenu } from "../DropDownMenu/DropDownMenu";
+import { DropChain } from "../DropChain/DropChain";
+import { cutUrl } from "../../../common/functionsJs";
 
 export const CoinPageData = (props) => {
   const coin = props.coin;
   const [clickList, setClickList] = useState();
 
   const clickDrop = (list) => {
-    console.log("clidk DROP");
     setClickList(list);
-    console.log("lenght", coin.meta.urls.website.length);
   };
 
   return (
@@ -33,9 +33,9 @@ export const CoinPageData = (props) => {
           <div className="coinDetails">
             <div className="capSupplyVol">
               <div className="coinDetailsContainer">
-                <p className="coinDetailsContentQ">Symbol:</p>
-                <p className="coinDetailsContentQ">Market Cap:</p>
-                <p className="coinDetailsContentQ">FDV:</p>
+                <p className="coinDetailsContentQ">Symbol: </p>
+                <p className="coinDetailsContentQ">Market Cap: </p>
+                <p className="coinDetailsContentQ">FDV: </p>
                 <p className="coinDetailsContentQ">24 hours Volume: </p>
                 <p className="coinDetailsContentQ">Total Supply: </p>
                 <p className="coinDetailsContentQ">Max Supply: </p>
@@ -62,10 +62,14 @@ export const CoinPageData = (props) => {
 
             <div className="capSupplyVol">
               <div className="coinDetailsContainer">
-                <p className="coinDetailsContentQ">Expolorer:</p>
-                <p className="coinDetailsContentQ">Website:</p>
-                <p className="coinDetailsContentQ">twitter:</p>
-                <p className="coinDetailsContentQ">Contract address:</p>
+                <p className="coinDetailsContentQ">Expolorer: </p>
+                <p className="coinDetailsContentQ">Website: </p>
+                {coin.meta.urls.twitter.length > 0 ? (
+                  <p className="coinDetailsContentQ">twitter: </p>
+                ) : null}
+                {props.coin.meta.contractAdress.length > 0 ? (
+                  <p className="coinDetailsContentQ">Contract address: </p>
+                ) : null}
               </div>
               <div className="coinDetailsContainer">
                 {coin.meta.urls.explorer.length > 1 ? (
@@ -85,13 +89,19 @@ export const CoinPageData = (props) => {
                   />
                 ) : (
                   <p className="coinDetailsContentA">
-                    {coin.meta.urls.website}
+                    {cutUrl(`${coin.meta.urls.website}`)}
                   </p>
                 )}
 
-                <p className="coinDetailsContentA">{coin.meta.urls.twitter}</p>
-                <p className="coinDetailsContentA">blabla</p>
-                <p className="coinDetailsContentA">blabla</p>
+                {coin.meta.urls.twitter.length > 0 ? (
+                  <p className="coinDetailsContentA">
+                    {coin.meta.urls.twitter}
+                  </p>
+                ) : null}
+
+                {props.coin.meta.contractAdress.length > 0 ? (
+                  <DropChain coin={coin} />
+                ) : null}
               </div>
             </div>
           </div>

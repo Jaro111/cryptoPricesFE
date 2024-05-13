@@ -26,12 +26,3 @@ export const DropMenu = (props) => {
     </div>
   );
 };
-
-//   <ul>
-//     {products.map(product => (
-//       <li key={product.id}>
-//         {product.name} - ${product.price}{' '}
-//         <button onClick={() => addToBasket(product)}>Add to Basket</button>
-//       </li>
-//     ))}
-//   </ul>

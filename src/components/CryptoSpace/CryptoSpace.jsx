@@ -22,7 +22,6 @@ export const CryptoSpace = () => {
     next = start + 100;
     currencies(next, limit);
     setStart(next);
-    console.log(start);
   };
 
   const prevFunc = () => {
@@ -39,15 +38,22 @@ export const CryptoSpace = () => {
   //
   //
   const clickCoin = (item) => {
-    console.log(item);
     navigate("./CoinPage", { state: item });
+    console.log(item);
   };
-
+  //
   useEffect(() => {
     currencies(start, limit);
   }, []);
   return (
     <div className="centre">
+      <div>
+        <div>
+          <button></button>
+          <button></button>
+          <button></button>
+        </div>
+      </div>
       <div className="CryptoSpace">
         {data.map((item, index) => {
           return (
