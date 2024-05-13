@@ -12,21 +12,26 @@ export const CoinCard = (props) => {
   };
   return (
     <div className="CoinCard">
-      <button
-        className="coinButton"
-        style={{
-          backgroundColor: colorFunc(props.pChange24),
-        }}
-        onClick={props.clickCoin}
-      >
-        <p className="rankCont">{props.rank}.</p>
-        <p className="tickerCont">{props.ticker}</p>
-        <img className="coinLogo" src={props.logo}></img>
+      <button className="coinButton" onClick={props.clickCoin}>
+        <div className="tickerDiv">
+          {/* <p className="rankCont"></p> */}
+          <p className="tickerCont">
+            {props.rank}. {props.ticker}
+          </p>
+          <img className="coinLogo" src={props.logo}></img>
+        </div>
 
-        <p className="priceContent">${priceFunc(props.price)}</p>
-        <p className="priceChnges">
-          {Math.round(props.pChange24 * 100) / 100}%
-        </p>
+        <div
+          className="colorDiv"
+          style={{
+            backgroundColor: colorFunc(props.pChange24),
+          }}
+        >
+          <p className="priceContent">${priceFunc(props.price)}</p>
+          <p className="priceChnges">
+            {Math.round(props.pChange24 * 100) / 100}%
+          </p>
+        </div>
       </button>
     </div>
   );
