@@ -118,6 +118,11 @@
   border-bottom: 1px solid rgb(197, 195, 195);
 }
 
+.websiteLink {
+  text-decoration: none;
+  color: black;
+}
+
 .chainEtc {
   width: 45%;
   height: 90%;

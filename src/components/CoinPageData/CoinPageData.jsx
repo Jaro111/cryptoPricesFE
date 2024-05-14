@@ -88,9 +88,15 @@ export const CoinPageData = (props) => {
                     clickList={clickList}
                   />
                 ) : (
-                  <p className="coinDetailsContentA">
-                    {cutUrl(`${coin.meta.urls.website}`)}
-                  </p>
+                  <a
+                    className="websiteLink"
+                    href={coin.meta.urls.website}
+                    target="_blank"
+                  >
+                    <p className="coinDetailsContentA">
+                      {cutUrl(`${coin.meta.urls.website}`)}
+                    </p>
+                  </a>
                 )}
 
                 {coin.meta.urls.twitter.length > 0 ? (
