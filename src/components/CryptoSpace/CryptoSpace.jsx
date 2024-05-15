@@ -1,5 +1,5 @@
 import "./CryptoSpace.css";
-import { getRequest } from "../../utils";
+import { getRequest } from "../../utils/utils";
 import { useState, useEffect } from "react";
 import { CoinCard } from "../CoinCard/CoinCard";
 import { useNavigate } from "react-router-dom";

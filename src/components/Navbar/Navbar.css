@@ -3,4 +3,7 @@
   height: 40px;
   border-bottom: solid 1px rgb(47, 255, 6);
   background-color: rgba(108, 201, 238, 0.486);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./DropList.css";
-import { cutUrl } from "../../../common/functionsJs";
+import { cutUrl } from "../../common/functionsJs";
 
 export const DropList = (props) => {
   const listItem = props.clickList.map((item, index) => (

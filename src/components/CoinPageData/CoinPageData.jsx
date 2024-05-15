@@ -4,7 +4,7 @@ import { priceFunc } from "../../priceFunc";
 import "./CoinPageData.css";
 import { DropMenu } from "../DropDownMenu/DropDownMenu";
 import { DropChain } from "../DropChain/DropChain";
-import { cutUrl } from "../../../common/functionsJs";
+import { cutUrl } from "../../common/functionsJs";
 
 export const CoinPageData = (props) => {
   const coin = props.coin;
