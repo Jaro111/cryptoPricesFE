@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import "./ButtonDiv.css";
 
+//
+
 export const ButtonDiv = (props) => {
   return (
-    <div>
+    <div className="buttonsContainer">
       <div>
         <button
           className="button1h"

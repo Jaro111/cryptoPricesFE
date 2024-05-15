@@ -21,6 +21,7 @@
   margin: 0;
   padding: 0;
   background-color: rgb(206, 240, 240);
+  z-index: 1;
 }
 
 .tickerDiv {

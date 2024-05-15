@@ -1,6 +1,6 @@
 import React from "react";
 import "./ChainList.css";
-import { cropText } from "../../../common/functionsJs";
+import { cropText } from "../../common/functionsJs";
 import { MdContentCopy } from "react-icons/md";
 
 export const ChainList = (props) => {
