@@ -4,6 +4,6 @@ import { CoinPageData } from "../components/CoinPageData/CoinPageData";
 
 export const CoinPage = () => {
   const location = useLocation();
-  const coin = location.state;
-  return <CoinPageData coin={coin} />;
+  const id = location.state;
+  return <CoinPageData id={id} />;
 };
