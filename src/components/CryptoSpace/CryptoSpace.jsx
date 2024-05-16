@@ -7,7 +7,7 @@ import { ButtonDiv } from "../ButtonDiv/ButtonDiv";
 
 export const CryptoSpace = () => {
   const [data, setData] = useState([]);
-  const [coin, setCoin] = useState({});
+  // const [coin, setCoin] = useState({});
   const [start, setStart] = useState(1);
   const [pchange, setPchange] = useState("");
   const [change1h, setChange1h] = useState(false);
@@ -42,7 +42,7 @@ export const CryptoSpace = () => {
   };
 
   const clickCoin = (item) => {
-    navigate("./CoinPage", { state: item });
+    navigate("./CoinPage", { state: item.id });
   };
   //
   const change1HClick = () => {

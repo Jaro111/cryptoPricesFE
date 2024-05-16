@@ -2,7 +2,8 @@ import React, { useLayoutEffect } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getCoinsIds } from "../../utils/utils";
-import { BsFilterSquare } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./Search.css";
 
 export const SearchBar = () => {
@@ -10,11 +11,19 @@ export const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [allCoins, setAllCoins] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-  //
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const getIdS = async () => {
     const searchIds = await getCoinsIds();
     setAllCoins(searchIds);
   };
+
+  useEffect(() => {
+    getIdS();
+  }, []);
+  //
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -37,13 +46,12 @@ export const SearchBar = () => {
     } else setSuggestions([]);
   };
 
-  const clickSearchedCoin = () => {
-    console.log("click");
+  const clickSearchedCoin = (suggestion) => {
+    console.log(location);
+    navigate("./CoinPage", { state: suggestion.id });
+    setSearchInput("");
+    setSuggestions([]);
   };
-
-  useEffect(() => {
-    getIdS();
-  }, []);
 
   return (
     <div className="sugDiv">
@@ -58,7 +66,11 @@ export const SearchBar = () => {
       {suggestions.length > 0 && (
         <ul className="sugList">
           {suggestions.map((suggestion, index) => (
-            <li onClick={clickSearchedCoin} className="sugItem" key={index}>
+            <li
+              onClick={() => clickSearchedCoin(suggestion)}
+              className="sugItem"
+              key={index}
+            >
               {suggestion.name}
             </li>
           ))}
