@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { getSingleCoin } from "../../utils/utils";
 import { useState } from "react";
 import { priceFunc } from "../../priceFunc";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import "./CoinPageData.css";
 import { DropMenu } from "../DropDownMenu/DropDownMenu";
 import { DropChain } from "../DropChain/DropChain";
@@ -139,7 +140,7 @@ export const CoinPageData = (props) => {
           </div>
         </div>
       ) : (
-        <p>Loading</p>
+        <p className="load">Loading ... </p>
       )}
     </div>
   );

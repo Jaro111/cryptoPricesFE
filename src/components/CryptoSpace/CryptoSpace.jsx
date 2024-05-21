@@ -15,8 +15,9 @@ export const CryptoSpace = () => {
   const [change7d, setChange7d] = useState(false);
   const [change30d, setChange30d] = useState(false);
 
-  const limit = 100;
   const navigate = useNavigate();
+
+  const limit = 100;
 
   const currencies = async (start, limit) => {
     const coins = await getRequest(start, limit);

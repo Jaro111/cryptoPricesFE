@@ -1,0 +1,31 @@
+.UserMenu {
+  margin-right: 20px;
+}
+
+.logInRegisterBtn {
+  background-color: transparent;
+  color: lightgreen;
+  width: 100px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+.logOutSpace {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  width: fit-content;
+}
+
+.userMenuContent {
+  margin: 0;
+  padding: 0;
+}
+
+.walletIcon,
+.favIcon {
+  width: 20px;
+  height: 20px;
+}

@@ -1,15 +1,24 @@
 import React from "react";
 import "./Navbar.css";
 import { SearchBar } from "../SearchBar/Search";
-import { Link } from "react-router-dom";
+import { UserMenu } from "../UserMenu/UserMenu";
+import { NavLink } from "react-router-dom";
+import { useState, useContext } from "react";
 
 export const Navbar = () => {
+  const [user, setUser] = useState({});
   return (
     <div className="Navbar">
-      <Link to="/"></Link>
-      <Link to="/CoinPage"></Link>
-      <Link to="/Portfolio"></Link>
+      <div className="navLinksContainer">
+        <NavLink className="navLink" to="/">
+          Home
+        </NavLink>
+      </div>
+
       <SearchBar />
+      <div className="rightNav">
+        <UserMenu className="userSpace" setUser={setUser} user={user} />
+      </div>
     </div>
   );
 };

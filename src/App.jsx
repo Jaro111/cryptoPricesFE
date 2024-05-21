@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer/Footer";
 import { Home } from "./pages/Home";
 import { Portfolio } from "./pages/Portfolio";
 import { CoinPage } from "./pages/CoinPage";
+import { Favourites } from "./pages/Favourites";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/coinPage" element={<CoinPage />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
       <Footer />
     </BrowserRouter>
