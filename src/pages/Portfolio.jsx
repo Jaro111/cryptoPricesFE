@@ -1,7 +1,9 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 export const Portfolio = () => {
-  console.log(bla);
+  const location = useLocation();
+  const user = location.state;
   return (
     <>
       <p>Portfolio BLABLA</p>
