@@ -39,3 +39,19 @@ export const getSingleCoin = async (id) => {
   const SingleCoinData = data.response;
   return SingleCoinData;
 };
+
+// Get multiple coins by id
+export const getMultipleCoins = async (id) => {
+  const res = await fetch("http://localhost:5000/getMultipleCoin", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: id,
+    }),
+  });
+  const data = await res.json();
+  console.log(data);
+  return data.response;
+};

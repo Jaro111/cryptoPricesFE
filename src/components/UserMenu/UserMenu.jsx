@@ -14,6 +14,7 @@ export const UserMenu = ({ setUser, user }) => {
   const logOut = () => {
     setUser({});
     setIsOpen(false);
+    navigate("./");
   };
 
   const goToPortfolio = () => {

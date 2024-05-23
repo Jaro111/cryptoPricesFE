@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import { getSingleCoin } from "../../utils/utils";
 import { useState } from "react";
 import { priceFunc } from "../../priceFunc";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { addCoinToPortfolio } from "../../utilsUser/coin/coinFunctions";
 import "./CoinPageData.css";
 import { DropMenu } from "../DropDownMenu/DropDownMenu";
 import { DropChain } from "../DropChain/DropChain";
 import { cutUrl } from "../../common/functionsJs";
-import { useNavigate } from "react-router-dom";
+import { IoWallet } from "react-icons/io5";
+import { FaRegStar } from "react-icons/fa";
 
 export const CoinPageData = (props) => {
   const id = props.id;
+  const user = props.user;
   const [clickList, setClickList] = useState();
   const [coin, setCoin] = useState([]);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     singleCoinData(id);
@@ -22,12 +22,16 @@ export const CoinPageData = (props) => {
 
   const singleCoinData = async (id) => {
     const data = await getSingleCoin(id);
-    console.log(data);
     setCoin(data);
   };
 
   const clickDrop = (list) => {
     setClickList(list);
+  };
+
+  const addToPortfolio = async (id, user) => {
+    const data = await addCoinToPortfolio(id, user.id);
+    console.log(data);
   };
 
   return (
@@ -72,10 +76,11 @@ export const CoinPageData = (props) => {
                     ${priceFunc(coin.quote.USD.volume_24h)}
                   </p>
                   <p className="coinDetailsContentA">{coin.total_supply}</p>
+
+                  <p className="coinDetailsContentA">{coin.circ_supply}</p>
                   <p className="coinDetailsContentA">
                     {coin.supply === null ? "ထ" : coin.supply}
                   </p>
-                  <p className="coinDetailsContentA">{coin.circ_supply}</p>
                 </div>
               </div>
 
@@ -89,6 +94,8 @@ export const CoinPageData = (props) => {
                   {coin.meta.contractAdress.length > 0 ? (
                     <p className="coinDetailsContentQ">Contract address: </p>
                   ) : null}
+                  <p className="coinDetailsContentQ">Add to portfolio </p>
+                  <p className="coinDetailsContentQ">Add to watchlist </p>
                 </div>
                 <div className="coinDetailsContainer">
                   {coin.meta.urls.explorer.length > 1 ? (
@@ -133,6 +140,14 @@ export const CoinPageData = (props) => {
                   {coin.meta.contractAdress.length > 0 ? (
                     <DropChain coin={coin} />
                   ) : null}
+                  <div className="addButtonsContainer">
+                    <button className="addButton">
+                      <IoWallet onClick={() => addToPortfolio(id, user)} />
+                    </button>
+                    <button className="addButton">
+                      <FaRegStar />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

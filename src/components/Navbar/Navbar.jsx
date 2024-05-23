@@ -5,8 +5,7 @@ import { UserMenu } from "../UserMenu/UserMenu";
 import { NavLink } from "react-router-dom";
 import { useState, useContext } from "react";
 
-export const Navbar = () => {
-  const [user, setUser] = useState({});
+export const Navbar = ({ setUser, user }) => {
   return (
     <div className="Navbar">
       <div className="navLinksContainer">

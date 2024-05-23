@@ -97,12 +97,6 @@ export const CryptoSpace = () => {
               rank={item.rank}
               ticker={item.symbol}
               price={item.quote.USD.price}
-              change={{
-                "1h": item.quote.USD.percent_change_1h,
-                "24h": item.quote.USD.percent_change_24h,
-                "7d": item.quote.USD.percent_change_7d,
-                "30d": item.quote.USD.percent_change_30d,
-              }}
               pChange24={
                 change30d
                   ? item.quote.USD.percent_change_30d
