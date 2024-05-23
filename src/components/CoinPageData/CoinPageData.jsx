@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { getSingleCoin } from "../../utils/utils";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { alertContext } from "../../common/contexts";
 import { priceFunc } from "../../priceFunc";
 import { addCoinToPortfolio } from "../../utilsUser/coin/coinFunctions";
 import "./CoinPageData.css";
@@ -15,6 +16,12 @@ export const CoinPageData = (props) => {
   const user = props.user;
   const [clickList, setClickList] = useState();
   const [coin, setCoin] = useState([]);
+  const setIsAlertOpen = useContext(alertContext).setIsAlertOpen;
+  const setAlertMessage = useContext(alertContext).setAlertMessage;
+  const notLogMessageP =
+    "If You wold like to create a Portfolio You need to Log In. If You don't have an account You Can Sign In. It takes 1 minute 😉";
+  const notLogMessageW =
+    "If You wold like to create a Watch List You need to Log In. If You don't have an account You Can Sign In. It takes 1 minute 😉";
 
   useEffect(() => {
     singleCoinData(id);
@@ -30,8 +37,23 @@ export const CoinPageData = (props) => {
   };
 
   const addToPortfolio = async (id, user) => {
-    const data = await addCoinToPortfolio(id, user.id);
-    console.log(data);
+    if (!user.username) {
+      setIsAlertOpen(true);
+      setAlertMessage(notLogMessageP);
+    } else {
+      const data = await addCoinToPortfolio(id, user.id);
+      console.log(data);
+    }
+  };
+
+  const addToWatchList = () => {
+    if (!user.username) {
+      setIsAlertOpen(true);
+      setAlertMessage(notLogMessageW);
+      console.log("add to Watchlist");
+    } else {
+      console.log("add to Watchlist");
+    }
   };
 
   return (
@@ -144,8 +166,11 @@ export const CoinPageData = (props) => {
                     <button className="addButton">
                       <IoWallet onClick={() => addToPortfolio(id, user)} />
                     </button>
-                    <button className="addButton">
-                      <FaRegStar />
+                    <button>
+                      <FaRegStar
+                        className="addButton"
+                        onClick={() => addToWatchList()}
+                      />
                     </button>
                   </div>
                 </div>

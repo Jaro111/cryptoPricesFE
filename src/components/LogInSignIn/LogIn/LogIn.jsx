@@ -14,8 +14,8 @@ export const LogIn = ({ setUser, user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Handle submit");
     const data = await logIn(username, password);
+    // console.log(data);
     setUser(data);
   };
 
