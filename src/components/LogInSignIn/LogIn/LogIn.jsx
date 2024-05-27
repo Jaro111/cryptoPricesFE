@@ -21,9 +21,9 @@ export const LogIn = ({ setUser, user }) => {
 
   return (
     <>
-      <div content="">
+      <div className="logInContainer" content="">
         <h3>Log in</h3>
-        <form onSubmit={handleSubmit}>
+        <form constent="" className="logInForm" onSubmit={handleSubmit}>
           <input
             placeholder="user name"
             onChange={(e) => changeHandler(e, setUsername, username)}

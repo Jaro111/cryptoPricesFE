@@ -1,26 +1,42 @@
 import React from "react";
-import { getCoins } from "../../utilsUser/coin/coinFunctions";
-import { getMultipleCoins } from "../../utils/utils";
-import { CoinCard } from "../CoinCard/CoinCard";
+import { getPortfolio } from "../../utilsUser/portfolio/portfolioFunctions";
 import { useState, useEffect } from "react";
 import "./PortfolioSpace.css";
-import { MdConstruction } from "react-icons/md";
 
 export const PortfolioSpace = (props) => {
-  const [userCoins, setUserCoins] = useState([]);
+  const [userPortfolio, setUserportfolio] = useState([]);
+  // const [userCoins, setUserCoins] = useState([]);
   const user = props.user;
 
-  const getUserCoins = async (user) => {
-    console.log(user);
-    const data = await getCoins(user.id);
-    const dataCoins = await getMultipleCoins(data);
-    console.log(dataCoins);
-    setUserCoins(dataCoins);
+  const getUserPortfolio = async (user) => {
+    const portfolio = await getPortfolio(user.id);
+    console.log(portfolio.portfolios);
+    setUserportfolio(portfolio.portfolios);
+    // const data = await getCoins(user.id);
+    // const dataCoins = await getMultipleCoins(data);
+    // console.log(dataCoins);
+    // setUserCoins(dataCoins);
   };
 
   useEffect(() => {
-    getUserCoins(user);
-  }, [user]);
+    getUserPortfolio(user);
+  }, [userPortfolio.length]);
 
-  return <div className="userCoinsSpace"></div>;
+  return (
+    <div className="portfolioSpace">
+      <div className="portfolioContainer">
+        {userPortfolio.length > 0 ? (
+          userPortfolio.length === 1 ? (
+            <p>{userPortfolio[0].title}</p>
+          ) : (
+            <p>LOnger</p>
+          )
+        ) : (
+          <p>Loading...</p>
+        )}
+        <p></p>
+      </div>
+      <div className="userCoinsSpace"></div>
+    </div>
+  );
 };
