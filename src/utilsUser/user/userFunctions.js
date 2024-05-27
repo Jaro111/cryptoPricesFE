@@ -14,7 +14,6 @@ export const signUp = async (username, email, password) => {
     }),
   });
   const data = await res.json();
-
   const userData = data.user;
   return userData;
 };

@@ -12,7 +12,7 @@ export const ModalWindow = ({ setIsOpen, setUser, user }) => {
         </div>
         <div className="centered">
           <div className="modal">
-            <LogSign setUser={setUser} user={user} />
+            <LogSign setUser={setUser} user={user} setIsOpen={setIsOpen} />
           </div>
         </div>
       </div>

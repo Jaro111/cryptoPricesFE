@@ -1,0 +1,12 @@
+.signInformContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

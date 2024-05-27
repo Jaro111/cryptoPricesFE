@@ -1,9 +1,9 @@
 .darkBG {
   background-color: rgba(14, 13, 13, 0.856);
-  width: 1000px;
+  width: 700px;
   height: 500px;
   top: 200px;
-  left: 5%;
+  left: -200px;
   position: absolute;
   z-index: 1000;
   display: block;

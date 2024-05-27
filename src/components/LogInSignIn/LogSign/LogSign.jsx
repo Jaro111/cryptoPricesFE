@@ -4,7 +4,7 @@ import { useState } from "react";
 import { LogIn } from "../LogIn/LogIn";
 import { SignIn } from "../SignIn/SignIn";
 
-export const LogSign = ({ setUser, user }) => {
+export const LogSign = ({ setUser, user, setIsOpen }) => {
   const [logisActive, setLogisActive] = useState(false);
   const [signIsActive, setSignisActive] = useState(false);
 
@@ -37,7 +37,9 @@ export const LogSign = ({ setUser, user }) => {
       </div>
       <div className="logSignContainer">
         {(logisActive && <LogIn setUser={setUser} user={user} />) ||
-          (signIsActive && <SignIn setUser={setUser} user={user} />)}
+          (signIsActive && (
+            <SignIn setUser={setUser} user={user} setIsOpen={setIsOpen} />
+          ))}
       </div>
     </div>
   );
