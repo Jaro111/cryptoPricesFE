@@ -3,10 +3,12 @@ import { getSingleCoin } from "../../utils/utils";
 import { useState, useContext } from "react";
 import { alertContext } from "../../common/contexts";
 import { priceFunc } from "../../priceFunc";
+import { getPortfolio } from "../../utilsUser/portfolio/portfolioFunctions";
 import { addCoinToPortfolio } from "../../utilsUser/coin/coinFunctions";
 import "./CoinPageData.css";
 import { DropMenu } from "../DropDownMenu/DropDownMenu";
 import { DropChain } from "../DropChain/DropChain";
+import { AddCoinPortModal } from "../AddCoinPortModal/AddCoinPortModal";
 import { cutUrl } from "../../common/functionsJs";
 import { IoWallet } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
@@ -18,6 +20,8 @@ export const CoinPageData = (props) => {
   const [coin, setCoin] = useState([]);
   const setIsAlertOpen = useContext(alertContext).setIsAlertOpen;
   const setAlertMessage = useContext(alertContext).setAlertMessage;
+  const [isAddPortModalVisible, setIsAddPortModalVisible] = useState(false);
+  const [portfolioList, setPortfolioList] = useState([]);
   const notLogMessageP =
     "If You wold like to create a Portfolio You need to Log In. If You don't have an account You Can Sign In. It takes 1 minute 😉";
   const notLogMessageW =
@@ -36,13 +40,15 @@ export const CoinPageData = (props) => {
     setClickList(list);
   };
 
-  const addToPortfolio = async (id, user) => {
+  const portfolioClick = async () => {
     if (!user.username) {
       setIsAlertOpen(true);
       setAlertMessage(notLogMessageP);
     } else {
-      const data = await addCoinToPortfolio(id, user.id);
-      console.log(data);
+      setIsAddPortModalVisible(true);
+      const data = await getPortfolio(user.id);
+      console.log(data.portfolios);
+      setPortfolioList(data.portfolios);
     }
   };
 
@@ -164,7 +170,7 @@ export const CoinPageData = (props) => {
                   ) : null}
                   <div className="addButtonsContainer">
                     <button className="addButton">
-                      <IoWallet onClick={() => addToPortfolio(id, user)} />
+                      <IoWallet onClick={() => portfolioClick()} />
                     </button>
                     <button>
                       <FaRegStar
@@ -172,6 +178,14 @@ export const CoinPageData = (props) => {
                         onClick={() => addToWatchList()}
                       />
                     </button>
+                    {isAddPortModalVisible && (
+                      <AddCoinPortModal
+                        setIsAddPortModalVisible={setIsAddPortModalVisible}
+                        portfolioList={portfolioList}
+                        user={user}
+                        id={id}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

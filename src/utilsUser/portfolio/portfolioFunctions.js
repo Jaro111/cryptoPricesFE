@@ -25,5 +25,23 @@ export const getPortfolio = async (UserId) => {
   });
 
   const data = await res.json();
-  return data;
+  const userData = data.portfolios;
+  return userData;
+};
+
+// update portfolio name
+
+export const renamePortfolio = async (title, UserId, id) => {
+  const res = await fetch("http://localhost:5000/user/updatePortfolioName", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: title,
+      UserId: UserId,
+      id: id,
+    }),
+  });
+
+  const data = await res.json();
+  return data.portfolios;
 };

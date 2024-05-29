@@ -1,0 +1,25 @@
+.portfolioMenu {
+  position: relative;
+}
+
+.portfolioList {
+  list-style: none;
+  position: absolute;
+  background-color: rgba(14, 13, 13, 0.856);
+  top: 80px;
+  display: grid;
+  gap: 5px;
+  padding-left: 0;
+  padding-right: 50px;
+  line-break: 10px;
+}
+
+.portfolioListItem {
+  display: flex;
+  width: 50px;
+}
+
+.portfolioListItem:hover {
+  color: aliceblue;
+  cursor: pointer;
+}
