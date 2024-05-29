@@ -2,10 +2,39 @@
   width: 80%;
   height: 90%;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .portfolioContainer {
+  background-color: silver;
   width: 80%;
   height: 20%;
   border: 1px solid blue;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.leftPportfolio {
+  width: max-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+
+.addPortfolioButton {
+  margin-left: 20px;
+  width: 25px;
+  height: 25px;
+  background-color: black;
+}
+
+.addPortfolioButton:hover {
+  color: red;
 }

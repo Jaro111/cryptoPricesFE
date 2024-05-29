@@ -1,11 +1,12 @@
 // add user coins
-export const addCoinToPortfolio = async (coinId, UserId) => {
+export const addCoinToPortfolio = async (coinId, UserId, PortfolioId) => {
   const res = await fetch("http://localhost:5000/coin/addCoin", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       coinId: coinId,
       UserId: UserId,
+      PortfolioId: PortfolioId,
     }),
   });
 
@@ -15,12 +16,13 @@ export const addCoinToPortfolio = async (coinId, UserId) => {
 
 // getUserCoins
 
-export const getCoins = async (UserId) => {
+export const getCoins = async (UserId, PortfolioId) => {
   const res = await fetch("http://localhost:5000/coin/getCoins", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       UserId: UserId,
+      PortfolioId: PortfolioId,
     }),
   });
   let idArray = [];
