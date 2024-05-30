@@ -23,24 +23,20 @@ export const AddCoinPortModal = (props) => {
         </div>
         <div className="portfolioListSpace">
           {props.portfolioList.length > 0 ? (
-            props.portfolioList.length === 1 ? (
-              <p>{props.portfolioList.title}</p>
-            ) : (
-              <>
-                <p>Chose portfolio</p>
-                <ul className="modalPortfolioListContainer">
-                  {props.portfolioList.map((item, index) => (
-                    <li
-                      onClick={() => addToPortfolio(item)}
-                      className="modalPortfolioListItem"
-                      key={index}
-                    >
-                      {item.title}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )
+            <>
+              <p>Chose portfolio</p>
+              <ul className="modalPortfolioListContainer">
+                {props.portfolioList.map((item, index) => (
+                  <li
+                    onClick={() => addToPortfolio(item)}
+                    className="modalPortfolioListItem"
+                    key={index}
+                  >
+                    {item.title}
+                  </li>
+                ))}
+              </ul>
+            </>
           ) : (
             <p>Loading</p>
           )}

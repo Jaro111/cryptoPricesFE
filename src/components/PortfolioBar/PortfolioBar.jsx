@@ -16,9 +16,9 @@ export const PortfolioBar = (props) => {
     >
       <div className="portfolioMenuButtons">
         <button onClick={props.showUpdatePortfolioModal}>
-          {!props.mainPortfolio.title
-            ? props.userPortfolio[0].title
-            : props.mainPortfolio.title}
+          {Object.keys(props.mainPortfolio).length > 0
+            ? props.mainPortfolio.title
+            : props.userPortfolio[0].title}
         </button>
         {props.userPortfolio.length > 1 && (
           <button onClick={() => setIsPortfolioDropVisible(true)}>{">"}</button>
