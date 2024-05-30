@@ -6,28 +6,34 @@ import "./PortfolioSpace.css";
 import { FaPlusSquare } from "react-icons/fa";
 import { PortfolioBar } from "../PortfolioBar/PortfolioBar";
 import { PortfolioUpdateModal } from "../PortfolioUpdateModal/PortfolioUpdateModal";
+import { UserCoinSpace } from "../UserCoinSpace/UserCoinSpace";
 
 export const PortfolioSpace = (props) => {
   const [userPortfolio, setUserportfolio] = useState([]);
   const [mainPortfolio, setMainPortfolio] = useState({});
   const [portfolioLength, setPortfolioLength] = useState(0);
+  const [newPortfolio, setNewPortfolio] = useState({});
   const [isUpdateModalVisible, setIsupdateModalVisible] = useState(false);
-  const [newPortfolioName, setNewPortfolioName] = useState("");
 
   // const [userCoins, setUserCoins] = useState([]);
   const user = props.user;
 
   const getUserPortfolio = async (user) => {
     const portfolio = await getPortfolio(user.id);
-    console.log(portfolio.length);
-    setUserportfolio(portfolio);
+    await setUserportfolio(portfolio);
+    await setPortfolioLength(userPortfolio.length);
     if (userPortfolio.length === 1) {
-      setMainPortfolio(userPortfolio[0]);
+      await setMainPortfolio(userPortfolio[0]);
+    }
+    if (Object.keys(mainPortfolio).length === 0) {
+      await setMainPortfolio(portfolio[0]);
     }
   };
 
   const addPortfolioFunc = async (user) => {
-    console.log("blabla addd");
+    const add = await addPortfolio(user.id);
+    console.log(add);
+    setNewPortfolio(add);
   };
 
   const showUpdatePortfolioModal = () => {
@@ -35,7 +41,7 @@ export const PortfolioSpace = (props) => {
   };
   useEffect(() => {
     getUserPortfolio(user);
-  }, []);
+  }, [mainPortfolio.title, isUpdateModalVisible, newPortfolio]);
 
   return (
     <div className="portfolioSpace">
@@ -61,10 +67,19 @@ export const PortfolioSpace = (props) => {
       {isUpdateModalVisible && (
         <PortfolioUpdateModal
           setIsupdateModalVisible={setIsupdateModalVisible}
+          user={user}
+          userPortfolio={userPortfolio}
+          setMainPortfolio={setMainPortfolio}
+          mainPortfolio={mainPortfolio}
         />
       )}
 
-      <div className="userCoinsSpace"></div>
+      <UserCoinSpace
+        user={user}
+        mainPortfolio={mainPortfolio}
+        setMainPortfolio={setMainPortfolio}
+        userPortfolio={userPortfolio}
+      />
     </div>
   );
 };

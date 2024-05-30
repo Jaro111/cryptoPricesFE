@@ -1,0 +1,100 @@
+.UserCoinSpace {
+  width: 80%;
+}
+
+.CoinCardUser {
+  width: 500px;
+  height: 40px;
+  border: 2px solid rgba(12, 11, 11, 0.836);
+  background-color: wheat;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tickerUserDiv {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 3%;
+  margin: 0;
+}
+
+.tickerContentContainer {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tickerUserCont {
+  color: black;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.logoUserContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  width: 50%;
+}
+.coinUserLogo {
+  width: 23px;
+  height: 23px;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.priceUserContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 15%;
+  padding-left: 30px;
+}
+.priceUserContent {
+  color: black;
+}
+
+.userHoldingsDetails {
+  width: 50%;
+  height: 100%;
+  border: 1px solid blue;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0px;
+}
+.userCoinHoldings {
+  width: 40%;
+  height: 100%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.userCoinQty {
+  width: 40%;
+  height: 100%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.addBuyDetailsIcon {
+  color: red;
+  background-color: greenyellow;
+}

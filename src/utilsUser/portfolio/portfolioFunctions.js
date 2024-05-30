@@ -43,5 +43,6 @@ export const renamePortfolio = async (title, UserId, id) => {
   });
 
   const data = await res.json();
-  return data.portfolios;
+
+  return data;
 };

@@ -47,8 +47,8 @@ export const CoinPageData = (props) => {
     } else {
       setIsAddPortModalVisible(true);
       const data = await getPortfolio(user.id);
-      console.log(data.portfolios);
-      setPortfolioList(data.portfolios);
+      console.log(data);
+      setPortfolioList(data);
     }
   };
 

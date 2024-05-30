@@ -26,11 +26,15 @@ export const getCoins = async (UserId, PortfolioId) => {
     }),
   });
   let idArray = [];
+
   const data = await res.json();
+
   const dataArray = data.coins;
+
   for (let i = 0; i < dataArray.length; i++) {
     idArray.push(dataArray[i].coinId);
   }
   const idString = idArray.join(",");
+
   return idString;
 };
