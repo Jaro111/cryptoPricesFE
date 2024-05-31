@@ -9,10 +9,9 @@ export const UserCoinSpace = (props) => {
   const [userCoins, setUserCoins] = useState([]);
   const mainPortfolio = props.mainPortfolio;
   const userPortfolio = props.userPortfolio;
-  const user = props.user;
 
   const loadCoins = async () => {
-    const coinsByPortfolio = await getCoins(user.id, mainPortfolio.id);
+    const coinsByPortfolio = await getCoins(mainPortfolio.id);
     if (coinsByPortfolio.length < 1) {
       setUserCoins(null);
     } else {
@@ -40,6 +39,8 @@ export const UserCoinSpace = (props) => {
             ticker={item.symbol}
             logo={item.logo}
             price={item.quote.USD.price}
+            coinId={item.id}
+            mainPortfolio={mainPortfolio}
           />
         ))
       ) : (
