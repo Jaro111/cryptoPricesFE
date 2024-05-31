@@ -9,7 +9,7 @@ export const AddCoinPortModal = (props) => {
   };
 
   const addToPortfolio = async (item) => {
-    const addCoin = await addCoinToPortfolio(props.id, props.user.id, item.id);
+    const addCoin = await addCoinToPortfolio(props.id, item.id);
     console.log(addCoin);
   };
   return (

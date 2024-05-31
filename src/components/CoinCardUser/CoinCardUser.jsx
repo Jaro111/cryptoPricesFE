@@ -7,10 +7,16 @@ import "./CoinCardUser.css";
 export const CoinCardUser = (props) => {
   const [isbuyDetailsModalVisible, setIsBuyDetailsModalVisible] =
     useState(false);
+  const [clickSymbol, setClickSymbol] = useState("");
+  const [clickCoinId, setClickCoinId] = useState(null);
+  const mainPortfolio = props.mainPortfolio;
 
   const openBuyDetailsModal = () => {
     setIsBuyDetailsModalVisible(true);
+    setClickSymbol(props.ticker);
+    setClickCoinId(props.coinId);
   };
+
   return (
     <div className="CoinCardUser">
       <div className="tickerUserDiv">
@@ -45,6 +51,10 @@ export const CoinCardUser = (props) => {
       {isbuyDetailsModalVisible && (
         <BuyDetailsModal
           setIsBuyDetailsModalVisible={setIsBuyDetailsModalVisible}
+          key={props.index}
+          clickSymbol={clickSymbol}
+          clickCoinId={clickCoinId}
+          mainPortfolio={mainPortfolio}
         />
       )}
     </div>

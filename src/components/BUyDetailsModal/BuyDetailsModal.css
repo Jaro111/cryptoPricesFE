@@ -1,10 +1,10 @@
 .BuyDetailsModalContainer {
-  left: 10%;
-  top: 13%;
+  left: 25%;
+  top: -10px;
   position: absolute;
   margin-top: 10px;
   width: 300px;
-  height: 200px;
+  height: fit-content;
   background-color: rgba(14, 13, 13, 0.856);
   border: 2px solid black;
   display: flex;
