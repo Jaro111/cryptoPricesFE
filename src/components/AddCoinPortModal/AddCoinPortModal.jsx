@@ -20,6 +20,7 @@ export const AddCoinPortModal = (props) => {
             onClick={closeAddCoinPortModalFunc}
             className="closeAddCoinPortModal"
           />
+          {/*  */}
         </div>
         <div className="portfolioListSpace">
           {props.portfolioList.length > 0 ? (
