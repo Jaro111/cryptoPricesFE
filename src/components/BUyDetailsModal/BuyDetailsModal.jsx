@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
+import { updateCoinDetails } from "../../utilsUser/coin/coinFunctions";
 import "./BuyDetailsModal.css";
-import { updateBuyDetails } from "../../utilsUser/coin/coinFunctions";
 
 export const BuyDetailsModal = (props) => {
   const [buyPrice, setBuyPrice] = useState(0);
   const [qty, setQty] = useState(0);
+
   const mainPortfolio = props.mainPortfolio;
 
   const changeHandler = (e, setter, state) => {
-    let typing = e.target.value;
+    setter(e.target.value);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const details = await updateCoinDetails(
+      props.coinId,
+      props.mainPortfolio.id,
+      buyPrice,
+      qty
+    );
+
+    props.setNewBuyDetails(details);
+    props.setIsBuyDetailsModalVisible(false);
   };
 
   return (
@@ -24,7 +34,7 @@ export const BuyDetailsModal = (props) => {
       <div className="updateBuyDetailsModalContainer">
         <form className="BuyDetailsModalForm" onSubmit={handleSubmit}>
           <div className="qtyBuyDetailsContainer">
-            <p>{props.clickSymbol.length > 0 ? props.clickSymbol : null}</p>
+            <p></p>
             <p>Buy Price</p>
             <input
               className="inputBuyDetailsModal"

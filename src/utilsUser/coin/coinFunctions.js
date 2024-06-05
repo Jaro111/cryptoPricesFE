@@ -23,41 +23,26 @@ export const getCoins = async (PortfolioId) => {
       PortfolioId: PortfolioId,
     }),
   });
-  let idArray = [];
+  let data = await res.json();
 
-  const data = await res.json();
-
-  const dataArray = data.coins;
-
-  for (let i = 0; i < dataArray.length; i++) {
-    idArray.push(dataArray[i].coinId);
-  }
-  const idString = idArray.join(",");
-
-  return idString;
+  return data;
 };
 
-// update Coin Buy Details
+// updat coin details
 
-export const updateBuyDetails = async (
-  buyPrice,
-  qty,
-  UserId,
-  PortfolioId,
-  coinId
-) => {
-  const res = await fetch("http://localhost:5000/coin/updateBuyDetails", {
+export const updateCoinDetails = async (coinId, PortfolioId, buyPrice, qty) => {
+  const res = await fetch("http://localhost:5000/buyDetails/updateBuyDetails", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
+      coinId: coinId,
+      PortfolioId: PortfolioId,
       buyPrice: buyPrice,
       qty: qty,
-      UserId: UserId,
-      PortfolioId: PortfolioId,
-      coinId: coinId,
     }),
   });
 
   const data = await res.json();
+  console.log(data);
   return data;
 };

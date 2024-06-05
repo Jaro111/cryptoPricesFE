@@ -2,21 +2,27 @@
   position: relative;
 }
 
+.portfolioMenuButtons {
+  margin-left: 10px;
+  width: fit-content;
+  height: fit-content;
+}
+
 .portfolioList {
   list-style: none;
   position: absolute;
   background-color: rgba(14, 13, 13, 0.856);
-  top: 50px;
+  margin-top: 0px;
+  margin-left: 10px;
   display: grid;
   gap: 5px;
-  padding-left: 0;
   padding-right: 50px;
   line-break: 10px;
 }
 
 .portfolioListItem {
   display: flex;
-  width: 50px;
+  width: fit-content;
 }
 
 .portfolioListItem:hover {

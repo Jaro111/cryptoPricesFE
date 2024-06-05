@@ -1,5 +1,5 @@
 .portfolioSpace {
-  width: 96%;
+  width: 98%;
   height: 90%;
   border: 1px solid rgb(233, 10, 10);
   display: flex;
@@ -10,7 +10,7 @@
 
 .portfolioContainer {
   background-color: silver;
-  width: 80%;
+  width: 99%;
   height: 20%;
   border: 1px solid blue;
   display: flex;
