@@ -4,6 +4,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { addCoinToPortfolio } from "../../utilsUser/coin/coinFunctions";
 
 export const AddCoinPortModal = (props) => {
+  const [addCoinMessage, setAddCoinMessage] = useState("");
   const closeAddCoinPortModalFunc = () => {
     props.setIsAddPortModalVisible(false);
   };
@@ -11,6 +12,7 @@ export const AddCoinPortModal = (props) => {
   const addToPortfolio = async (item) => {
     const addCoin = await addCoinToPortfolio(props.id, item.id);
     console.log(addCoin);
+    setAddCoinMessage(addCoin.message);
   };
   return (
     <div className="AddCoinPortModalWrapper" content="">
@@ -20,11 +22,12 @@ export const AddCoinPortModal = (props) => {
             onClick={closeAddCoinPortModalFunc}
             className="closeAddCoinPortModal"
           />
+          {/*  */}
         </div>
         <div className="portfolioListSpace">
           {props.portfolioList.length > 0 ? (
             <>
-              <p>Chose portfolio</p>
+              <p className="modalPortfoWelcome">Chose portfolio</p>
               <ul className="modalPortfolioListContainer">
                 {props.portfolioList.map((item, index) => (
                   <li
@@ -41,6 +44,7 @@ export const AddCoinPortModal = (props) => {
             <p>Loading</p>
           )}
         </div>
+        <p className="addCoinMessage">{addCoinMessage}</p>
       </div>
     </div>
   );

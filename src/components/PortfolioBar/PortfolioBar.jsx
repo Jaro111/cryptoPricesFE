@@ -24,6 +24,7 @@ export const PortfolioBar = (props) => {
           <button onClick={() => setIsPortfolioDropVisible(true)}>{">"}</button>
         )}
       </div>
+
       {props.userPortfolio.length > 1 && isPortfolioDropVisible && (
         <ul className="portfolioList">
           {props.userPortfolio.map((item, index) => (

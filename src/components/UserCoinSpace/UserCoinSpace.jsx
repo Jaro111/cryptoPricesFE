@@ -1,46 +1,52 @@
 import React from "react";
-import "./UserCoinSpace.css";
 import { useEffect, useState } from "react";
-import { getCoins } from "../../utilsUser/coin/coinFunctions";
-import { getMultipleCoins } from "../../utils/utils";
 import { CoinCardUser } from "../CoinCardUser/CoinCardUser";
+import { CoinCardUserMenu } from "../CoinCardUserMenu/CoinCardUserMeny";
+import { getBuyDetails } from "../../utilsUser/buyDetails/buyDetails";
+import "./UserCoinSpace.css";
+import { priceFunc } from "../../priceFunc";
 
 export const UserCoinSpace = (props) => {
-  const [userCoins, setUserCoins] = useState([]);
+  const [buyDetails, setBuyDetails] = useState([]);
+  const [newBuyDetails, setNewBuyDetails] = useState({});
   const mainPortfolio = props.mainPortfolio;
   const userPortfolio = props.userPortfolio;
 
-  const loadCoins = async () => {
-    const coinsByPortfolio = await getCoins(mainPortfolio.id);
-    if (coinsByPortfolio.length < 1) {
-      setUserCoins(null);
+  const buyData = async (id) => {
+    if (!mainPortfolio.id) {
+      return null;
     } else {
-      const fetchCoins = await getMultipleCoins(coinsByPortfolio);
-      await console.log(fetchCoins);
-      setUserCoins(fetchCoins);
+      const buyData = await getBuyDetails(id);
+      console.log(buyData.response);
+      setBuyDetails(buyData.response);
     }
   };
 
   useEffect(() => {
-    if (Object.keys(mainPortfolio).length < 1) {
-      console.log("Wait");
+    if (!mainPortfolio.id) {
+      console.log("Portfolio Loading...");
     } else {
-      loadCoins();
+      buyData(mainPortfolio.id);
     }
-  }, [mainPortfolio.id]);
+  }, [mainPortfolio.id, newBuyDetails]);
 
   return (
     <div className="UserCoinSpace">
-      <CoinCardUser ticker={"Symbol"} logo={null} price={"Price"} />
-      {!userCoins ? null : userCoins.length > 0 ? (
-        userCoins.map((item, index) => (
+      <CoinCardUserMenu />
+      {!buyDetails ? null : buyDetails.length > 0 ? (
+        buyDetails.map((item, index) => (
           <CoinCardUser
             key={index}
             ticker={item.symbol}
             logo={item.logo}
             price={item.quote.USD.price}
-            coinId={item.id}
+            buyPrice={item.coinDetails.buyPrice}
+            qty={item.coinDetails.qty}
             mainPortfolio={mainPortfolio}
+            coinId={item.id}
+            symbol={item.symbol}
+            setNewBuyDetails={setNewBuyDetails}
+            newBuyDetails={newBuyDetails}
           />
         ))
       ) : (
