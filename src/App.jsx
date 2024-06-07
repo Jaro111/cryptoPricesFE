@@ -18,6 +18,12 @@ function App() {
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertOpen, setIsAlertOpen] = useState(false);
 
+  const logInWithToken = async (token, setUser) => {
+    const persUser = await authCheck(token);
+    console.log("persUser: ", persUser.user);
+    await setUser(persUser.user);
+  };
+
   useEffect(() => {
     if (document.cookie) {
       let token = Cookies.get("jwt-token");
@@ -30,15 +36,14 @@ function App() {
     }
   }, []);
 
-  const logInWithToken = async (token, setUser) => {
-    const persUser = await authCheck(token);
-    console.log("persUser: ", persUser.user);
-    await setUser(persUser.user);
-  };
-
   return (
     <alertContext.Provider
-      value={{ isAlertOpen, setIsAlertOpen, alertMessage, setAlertMessage }}
+      value={{
+        isAlertOpen,
+        setIsAlertOpen,
+        alertMessage,
+        setAlertMessage,
+      }}
     >
       <BrowserRouter basename="">
         <Alert />
