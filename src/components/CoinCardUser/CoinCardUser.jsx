@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { priceFunc } from "../../priceFunc";
 import { BuyDetailsModal } from "../BUyDetailsModal/BuyDetailsModal";
+import { DeleteCoinPortfolioModal } from "../DeleteCoinPortfolioModal/DeleteCoinPortfolioModal";
 import { FaPlusSquare } from "react-icons/fa";
+import { MdEdit } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
+
 import "./CoinCardUser.css";
 
 export const CoinCardUser = (props) => {
   const [isbuyDetailsModalVisible, setIsBuyDetailsModalVisible] =
     useState(false);
+  const [
+    isDeleteCoinPortfolioModalVisible,
+    setIsDeleteCoinPOrtfolioModalVisible,
+  ] = useState(false);
   const [symbol, setSymbol] = useState("");
   const [coinId, setCoinId] = useState("");
   const [profit, setProfit] = useState(0);
@@ -15,6 +23,8 @@ export const CoinCardUser = (props) => {
 
   const mainPortfolio = props.mainPortfolio;
   const setNewBuyDetails = props.setNewBuyDetails;
+  const deleteMessage = props.deleteMessage;
+  const setDeleteMessage = props.setDeleteMessage;
 
   const openBuyDetailsModal = () => {
     setIsBuyDetailsModalVisible(true);
@@ -30,6 +40,10 @@ export const CoinCardUser = (props) => {
     setHoldingValue(currentValue);
     setValueDifference(difference);
     setProfit(profitValue);
+  };
+
+  const deleteCoinFunc = () => {
+    setIsDeleteCoinPOrtfolioModalVisible(true);
   };
 
   useEffect(() => {
@@ -53,10 +67,23 @@ export const CoinCardUser = (props) => {
         </div>
       </div>
       <div className="addPortfolioContainer">
-        <FaPlusSquare
-          onClick={() => openBuyDetailsModal()}
-          className="addBuyDetailsIcon"
-        />
+        {props.buyPrice > 0 ? (
+          <>
+            <MdEdit
+              className="editIcon"
+              onClick={() => openBuyDetailsModal()}
+            />
+            <MdDeleteForever className="deleteIcon" onClick={deleteCoinFunc} />
+          </>
+        ) : (
+          <>
+            <FaPlusSquare
+              onClick={() => openBuyDetailsModal()}
+              className="addBuyDetailsIcon"
+            />
+            <MdDeleteForever className="deleteIcon" onClick={deleteCoinFunc} />
+          </>
+        )}
       </div>
       {props.buyPrice > 0 && (
         <div className="userHoldingsDetails">
@@ -101,6 +128,19 @@ export const CoinCardUser = (props) => {
           symbol={props.symbol}
           coinId={props.coinId}
           setNewBuyDetails={setNewBuyDetails}
+        />
+      )}
+      {isDeleteCoinPortfolioModalVisible && (
+        <DeleteCoinPortfolioModal
+          setIsDeleteCoinPOrtfolioModalVisible={
+            setIsDeleteCoinPOrtfolioModalVisible
+          }
+          mainPortfolio={mainPortfolio}
+          index={props.index}
+          symbol={props.symbol}
+          coinId={props.coinId}
+          deleteMessage={deleteMessage}
+          setDeleteMessage={setDeleteMessage}
         />
       )}
     </div>

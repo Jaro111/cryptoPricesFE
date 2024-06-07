@@ -29,3 +29,18 @@ export const getBuyDetails = async (PortfolioId) => {
   const data = res.json();
   return data;
 };
+
+// delete Buy details and Coin
+export const deleteBuyDetails = async (PortfolioId, coinId) => {
+  const res = await fetch("http://localhost:5000/buyDetails/deleteBuyDetails", {
+    method: "delete",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      PortfolioId: PortfolioId,
+      coinId: coinId,
+    }),
+  });
+
+  const data = res.json();
+  return data;
+};

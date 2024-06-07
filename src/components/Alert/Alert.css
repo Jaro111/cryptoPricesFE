@@ -5,8 +5,8 @@
   align-items: center;
   position: absolute;
   background-color: rgba(14, 13, 13, 0.856);
-  width: 500px;
-  height: 400px;
+  width: fit-content;
+  height: 200px;
   border: 2px solid black;
   z-index: 1000;
   position: absolute;
@@ -27,6 +27,7 @@
   height: 10%;
   display: flex;
   justify-content: flex-end;
+  position: relative;
 }
 .alertMessageContainer {
   width: 90%;
@@ -44,5 +45,17 @@
 
 .alertMessage {
   font-size: 18px;
-  margin-top: 30%;
+}
+
+.alerMessageDeleteCoinBtnContainer {
+  position: absolute;
+  bottom: 50px;
+}
+.alertMessageDeleteCoinBtn {
+  background-color: black;
+  border: 1px solid white;
+  color: red;
+}
+.alertMessageDeleteCoinBtn:hover {
+  color: yellowgreen;
 }
