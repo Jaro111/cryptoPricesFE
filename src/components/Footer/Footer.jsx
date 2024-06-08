@@ -8,6 +8,7 @@ export const Footer = () => {
       <Link to="./"></Link>
       <Link to="./CoinPage"></Link>
       <Link to="./Portfolio"></Link>
+      <div className="footerDiv"></div>
     </div>
   );
 };

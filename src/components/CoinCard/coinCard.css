@@ -23,7 +23,7 @@
 
 .tickerDiv {
   border: 2px solid rgba(12, 11, 11, 0.836);
-  background-color: wheat;
+  background-color: rgb(202, 201, 201);
   height: 100%;
   width: 45%;
   margin: 0;
@@ -50,6 +50,7 @@
 
 .tickerCont {
   color: black;
+
   font-size: 14px;
   font-weight: 700;
   display: flex;
@@ -81,7 +82,8 @@
   right: 0;
 }
 .priceContent {
-  color: black;
+  color: white;
+  /* -webkit-text-stroke: 1px black; */
   font-size: 14px;
   font-weight: 700;
   margin: 0;

@@ -1,7 +1,10 @@
 .Footer {
   width: 100%;
-  height: 30px;
+
   margin-top: auto;
   border-top: solid 3px rgb(51, 255, 0);
   background-color: black;
+}
+
+.footerDiv {
 }

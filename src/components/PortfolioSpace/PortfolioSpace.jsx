@@ -14,6 +14,7 @@ export const PortfolioSpace = (props) => {
   const [portfolioLength, setPortfolioLength] = useState(0);
   const [newPortfolio, setNewPortfolio] = useState({});
   const [isUpdateModalVisible, setIsupdateModalVisible] = useState(false);
+  const [deletePortfolioMessage, setDeletePortfolioMessage] = useState("");
 
   // const [userCoins, setUserCoins] = useState([]);
   const user = props.user;
@@ -41,7 +42,12 @@ export const PortfolioSpace = (props) => {
   };
   useEffect(() => {
     getUserPortfolio(user);
-  }, [mainPortfolio.title, isUpdateModalVisible, newPortfolio]);
+  }, [
+    mainPortfolio.title,
+    isUpdateModalVisible,
+    newPortfolio,
+    mainPortfolio.id,
+  ]);
 
   return (
     <div className="portfolioSpace">
@@ -55,6 +61,8 @@ export const PortfolioSpace = (props) => {
             mainPortfolio={mainPortfolio}
             setMainPortfolio={setMainPortfolio}
             showUpdatePortfolioModal={() => showUpdatePortfolioModal()}
+            deletePortfolioMessage={deletePortfolioMessage}
+            setDeletePortfolioMessage={setDeletePortfolioMessage}
           />
         ) : (
           <p>Lodaing...</p>
@@ -71,6 +79,8 @@ export const PortfolioSpace = (props) => {
           userPortfolio={userPortfolio}
           setMainPortfolio={setMainPortfolio}
           mainPortfolio={mainPortfolio}
+          deletePortfolioMessage={deletePortfolioMessage}
+          setDeletePortfolioMessage={setDeletePortfolioMessage}
         />
       )}
 

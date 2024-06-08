@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./PortfolioBar.css";
 
 export const PortfolioBar = (props) => {
@@ -8,6 +8,8 @@ export const PortfolioBar = (props) => {
   const mainPortfolioFunc = (item) => {
     props.setMainPortfolio(item);
   };
+
+  useEffect(() => {});
 
   return (
     <div

@@ -14,6 +14,7 @@ export const UserCoinSpace = (props) => {
   const [deleteMessage, setDeleteMessage] = useState("");
   const [portfolioValue, setPortfolioValue] = useState(0);
   const [chartData, setChartData] = useState([]);
+  const [deletePortfolioMessage, setDeletePortfolioMessage] = useState("");
   const mainPortfolio = props.mainPortfolio;
   const userPortfolio = props.userPortfolio;
 
