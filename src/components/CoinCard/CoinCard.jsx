@@ -7,7 +7,7 @@ import { FaRegStar } from "react-icons/fa";
 export const CoinCard = (props) => {
   const colorFunc = (value) => {
     if (Math.round(value) > 0) {
-      return "rgb(25, 243, 36)";
+      return "green";
     } else {
       return "red";
     }
@@ -23,7 +23,6 @@ export const CoinCard = (props) => {
         </div>
         <img className="coinLogo" src={props.logo}></img>
       </div>
-
       <div
         className="colorDiv"
         style={{
@@ -31,6 +30,7 @@ export const CoinCard = (props) => {
         }}
       >
         <p className="priceContent">${priceFunc(props.price)}</p>
+        <p className="capCoinCard">{priceFunc(Math.round(props.mCap))}</p>
         <p className="priceChnges">
           {Math.round(props.pChange24 * 100) / 100}%
         </p>

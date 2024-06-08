@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 export const Footer = () => {
   return (
@@ -8,7 +9,10 @@ export const Footer = () => {
       <Link to="./"></Link>
       <Link to="./CoinPage"></Link>
       <Link to="./Portfolio"></Link>
-      <div className="footerDiv"></div>
+      <div className="cmcLogoDiv">
+        <p className="cmcLogoContent">All Data Provided by</p>
+        <img src={logo} className="cmcLogo"></img>
+      </div>
     </div>
   );
 };

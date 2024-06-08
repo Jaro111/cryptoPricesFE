@@ -23,27 +23,38 @@ export const SearchBar = () => {
 
   useEffect(() => {
     getIdS();
-  }, []);
+  }, [suggestions]);
   //
 
   const handleChange = (e) => {
     e.preventDefault();
     const value = e.target.value;
     setSearchInput(value);
-
-    if (value.length > 1) {
-      const myList = allCoins.filter((item) => {
+    let myList = [];
+    if (value.length > 2) {
+      allCoins.filter((item, index) => {
         if (
-          item.name.toLowerCase().includes(searchInput) ||
-          item.symbol.toLowerCase().includes(searchInput)
+          // item.name.toLowerCase().includes(searchInput) ||
+          // item.symbol.toLowerCase().includes(searchInput)
+          value.slice(0, value.length) ===
+            item.name.toLowerCase().slice(0, value.length) ||
+          value.slice(0, value.length) ===
+            item.symbol.toLowerCase().slice(0, value.length)
         ) {
-          return item;
-        } else {
+          myList.push(item);
+        } else if (
+          value.slice(0, value.length) !==
+            item.name.toLowerCase().slice(0, value.length) ||
+          value.slice(0, value.length) !==
+            item.symbol.toLowerCase().slice(0, value.length)
+        ) {
+          myList.splice(index, 1);
+        }
+        {
           setSuggestions([]);
         }
       });
-
-      setSuggestions(myList.slice(0, 5));
+      setSuggestions(myList.slice(0, 10));
     } else setSuggestions([]);
   };
 
@@ -58,7 +69,7 @@ export const SearchBar = () => {
     <div className="sugDiv">
       <input
         className="inputCoinSearch"
-        type="text"
+        type="search"
         placeholder="Search"
         onChange={handleChange}
         value={searchInput}
@@ -72,7 +83,7 @@ export const SearchBar = () => {
               className="sugItem"
               key={index}
             >
-              {suggestion.name}
+              {suggestion.name}({suggestion.symbol})
             </li>
           ))}
         </ul>

@@ -97,6 +97,7 @@ export const CryptoSpace = () => {
               rank={item.rank}
               ticker={item.symbol}
               price={item.quote.USD.price}
+              mCap={item.quote.USD.fully_diluted_market_cap}
               pChange24={
                 change30d
                   ? item.quote.USD.percent_change_30d
