@@ -46,3 +46,19 @@ export const renamePortfolio = async (title, UserId, id) => {
 
   return data;
 };
+
+// delete portfolio
+
+export const deletePortfolio = async (UserId, PortfolioId) => {
+  const res = await fetch("http://localhost:5000/user/deletePortfolio", {
+    method: "delete",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      PortfolioId: PortfolioId,
+      UserId: UserId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};

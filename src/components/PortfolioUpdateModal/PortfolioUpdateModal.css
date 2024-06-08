@@ -4,7 +4,7 @@
   position: absolute;
   margin-top: 10px;
   width: 300px;
-  height: 200px;
+  height: fit-content;
   background-color: rgba(14, 13, 13, 0.856);
   border: 2px solid black;
   display: flex;
@@ -36,4 +36,26 @@
 
   display: flex;
   justify-content: flex-end;
+}
+
+.deleteModalSpace {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.confirmRenamePortfolioBtn,
+.deletePortfolioBtn {
+  background-color: black;
+  border: 1px solid white;
+  color: greenyellow;
+}
+
+.confirmRenamePortfolioBtn:hover,
+.deletePortfolioBtn:hover {
+  background-color: red;
 }

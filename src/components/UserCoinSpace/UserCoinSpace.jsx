@@ -17,22 +17,6 @@ export const UserCoinSpace = (props) => {
   const mainPortfolio = props.mainPortfolio;
   const userPortfolio = props.userPortfolio;
 
-  // const colorFunc = (val) => {
-  //   if (val === 1) {
-  //     return "rgb(1, 192, 0)";
-  //   } else if (val === 2) {
-  //     return "rgb(0, 1, 255)";
-  //   } else if (val > 2 && val <= 10) {
-  //     return "rgb(1, 149, 133)";
-  //   } else if (val > 10 && val <= 50) {
-  //     return "rgb(83, 125, 26)";
-  //   } else if (val > 50 && val <= 100) {
-  //     return "rgb(219, 94, 1)";
-  //   } else if (val > 100 && val <= 200) {
-  //     return "rgb(219, 22, 190)";
-  //   } else return "rgb(219, 2, 1)";
-  // };
-
   const randomRgb = () => {
     const r = Math.floor(Math.random() * 255);
     const g = Math.floor(Math.random() * 255);
@@ -72,7 +56,7 @@ export const UserCoinSpace = (props) => {
         });
       }
     });
-    console.log("chartData");
+    console.log("chartData", data);
     setChartData(data);
   };
 
@@ -136,7 +120,8 @@ export const UserCoinSpace = (props) => {
             chartData={chartData}
             portfolioValue={portfolioValue}
           />
-        ) : null}
+        ) : // <p>Loading ...</p>
+        null}
       </div>
     </div>
   );
