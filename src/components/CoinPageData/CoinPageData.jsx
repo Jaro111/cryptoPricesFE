@@ -33,6 +33,7 @@ export const CoinPageData = (props) => {
 
   const singleCoinData = async (id) => {
     const data = await getSingleCoin(id);
+    console.log(data);
     setCoin(data);
   };
 
@@ -47,6 +48,7 @@ export const CoinPageData = (props) => {
     } else {
       setIsAddPortModalVisible(true);
       const data = await getPortfolio(user.id);
+
       setPortfolioList(data);
     }
   };
@@ -78,104 +80,178 @@ export const CoinPageData = (props) => {
                 $ {priceFunc(coin.quote.USD.price)}
               </p>
             </div>
+            <div className="coinDescriptionContainer">
+              <div className="coinDescriptionSpace">
+                <p className="coinDescriptionContent">
+                  {" "}
+                  {coin.meta.description}
+                </p>
+              </div>
+            </div>
           </div>
           <div className="detailContainer">
-            <div className="coinDetails">
-              <div className="capSupplyVol">
-                <div className="coinDetailsContainer">
-                  <p className="coinDetailsContentQ">Symbol: </p>
-                  <p className="coinDetailsContentQ">Market Cap: </p>
-                  <p className="coinDetailsContentQ">FDV: </p>
-                  <p className="coinDetailsContentQ">24 hours Volume: </p>
-                  <p className="coinDetailsContentQ">Total Supply: </p>
-                  <p className="coinDetailsContentQ">Max Supply: </p>
-                  <p className="coinDetailsContentQ">Circulating Supply: </p>
-                </div>
-                <div className="coinDetailsContainer">
-                  <p className="coinDetailsContentA">{coin.symbol}</p>
-                  <p className="coinDetailsContentA">
-                    ${priceFunc(coin.quote.USD.market_cap)}
-                  </p>
-                  <p className="coinDetailsContentA">
-                    ${priceFunc(coin.quote.USD.fully_diluted_market_cap)}
-                  </p>
-                  <p className="coinDetailsContentA">
-                    ${priceFunc(coin.quote.USD.volume_24h)}
-                  </p>
-                  <p className="coinDetailsContentA">{coin.total_supply}</p>
-
-                  <p className="coinDetailsContentA">{coin.circ_supply}</p>
-                  <p className="coinDetailsContentA">
-                    {coin.supply === null ? "ထ" : coin.supply}
-                  </p>
-                </div>
-              </div>
-
-              <div className="capSupplyVol">
-                <div className="coinDetailsContainer">
-                  <p className="coinDetailsContentQ">Expolorer: </p>
-                  <p className="coinDetailsContentQ">Website: </p>
-                  {coin.meta.urls.twitter.length > 0 ? (
-                    <p className="coinDetailsContentQ">twitter: </p>
-                  ) : null}
-                  {coin.meta.contractAdress.length > 0 ? (
-                    <p className="coinDetailsContentQ">Contract address: </p>
-                  ) : null}
-                  <p className="coinDetailsContentQ">Add to portfolio </p>
-                  <p className="coinDetailsContentQ">Add to watchlist </p>
-                </div>
-                <div className="coinDetailsContainer">
-                  {coin.meta.urls.explorer.length > 1 ? (
-                    <DropMenu
-                      clickDrop={() => clickDrop(coin.meta.urls.explorer)}
-                      clickList={clickList}
-                    />
-                  ) : (
-                    <a
-                      className="websiteLink"
-                      href={coin.meta.urls.explorer}
-                      target="_blank"
-                    >
-                      <p className="coinDetailsContentA">
-                        {cutUrl(`${coin.meta.urls.explorer}`)}
-                      </p>
-                    </a>
-                  )}
-                  {coin.meta.urls.website.length > 1 ? (
-                    <DropMenu
-                      clickDrop={() => clickDrop(coin.meta.urls.website)}
-                      clickList={clickList}
-                    />
-                  ) : (
-                    <a
-                      className="websiteLink"
-                      href={coin.meta.urls.website}
-                      target="_blank"
-                    >
-                      <p className="coinDetailsContentA">
-                        {cutUrl(`${coin.meta.urls.website}`)}
-                      </p>
-                    </a>
-                  )}
-
-                  {coin.meta.urls.twitter.length > 0 ? (
-                    <p className="coinDetailsContentA">
-                      {coin.meta.urls.twitter}
+            <div className="listDetailContainer">
+              <ul className="listCoinDetail">
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">Symbol: </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <p className="listCoinDetailItemContentA">{coin.symbol}</p>
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">Market Cap: </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <p className="listCoinDetailItemContentA">
+                      ${priceFunc(coin.quote.USD.market_cap)}
                     </p>
-                  ) : null}
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">FDV: </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <p className="listCoinDetailItemContentA">
+                      ${priceFunc(coin.quote.USD.market_cap)}
+                    </p>
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">
+                      24 hours Volume:
+                    </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <p className="listCoinDetailItemContentA">
+                      ${priceFunc(coin.quote.USD.volume_24h)}
+                    </p>
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">Total Supply: </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <p className="listCoinDetailItemContentA">
+                      {priceFunc(coin.total_supply)}
+                    </p>
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">Max Supply: </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <p className="listCoinDetailItemContentA">
+                      {coin.supply === null ? "ထ" : coin.supply}
+                    </p>
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">
+                      Circulating Supply:{" "}
+                    </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <p className="listCoinDetailItemContentA">
+                      {priceFunc(coin.circ_supply)}
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="listDetailContainer">
+              <ul className="listCoinDetail">
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">Expolorer: </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    {coin.meta.urls.explorer.length > 1 ? (
+                      <DropMenu
+                        clickDrop={() => clickDrop(coin.meta.urls.explorer)}
+                        clickList={clickList}
+                      />
+                    ) : (
+                      <a
+                        className="websiteLink"
+                        href={coin.meta.urls.explorer}
+                        target="_blank"
+                      >
+                        <p className="coinDetailsContentA">
+                          {cutUrl(`${coin.meta.urls.explorer}`)}
+                        </p>
+                      </a>
+                    )}
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    {coin.meta.contractAdress.length > 0 ? (
+                      <p className="listCoinDetailItemContentQ">
+                        Contract address:
+                      </p>
+                    ) : null}
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    {coin.meta.contractAdress.length > 0 ? (
+                      <DropChain coin={coin} />
+                    ) : null}
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">Website: </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    {coin.meta.urls.website.length > 1 ? (
+                      <DropMenu
+                        clickDrop={() => clickDrop(coin.meta.urls.website)}
+                        clickList={clickList}
+                      />
+                    ) : (
+                      <a
+                        className="websiteLink"
+                        href={coin.meta.urls.website}
+                        target="_blank"
+                      >
+                        <p className="coinDetailsContentA">
+                          {cutUrl(`${coin.meta.urls.website}`)}
+                        </p>
+                      </a>
+                    )}
+                  </div>
+                </li>
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    {coin.meta.urls.twitter.length > 0 ? (
+                      <p className="listCoinDetailItemContentQ">Twitter: </p>
+                    ) : null}
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    {coin.meta.urls.twitter.length > 0 ? (
+                      <p className="listCoinDetailItemContentA">
+                        {coin.meta.urls.twitter}
+                      </p>
+                    ) : null}
+                  </div>
+                </li>
 
-                  {coin.meta.contractAdress.length > 0 ? (
-                    <DropChain coin={coin} />
-                  ) : null}
-                  <div className="addButtonsContainer">
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">
+                      Add To Portfolio {"->"}
+                    </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
                     <button className="addButton">
                       <IoWallet onClick={() => portfolioClick()} />
-                    </button>
-                    <button>
-                      <FaRegStar
-                        className="addButton"
-                        onClick={() => addToWatchList()}
-                      />
                     </button>
                     {isAddPortModalVisible && (
                       <AddCoinPortModal
@@ -186,10 +262,39 @@ export const CoinPageData = (props) => {
                       />
                     )}
                   </div>
-                </div>
+                </li>
+
+                <li className="listCoinDetailItem">
+                  <div className="listCoinDetailItemContainerQ">
+                    <p className="listCoinDetailItemContentQ">
+                      Add To Watchlist {"->"}
+                    </p>
+                  </div>
+                  <div className="listCoinDetailItemContainerA">
+                    <button className="addButton">
+                      <FaRegStar
+                        className="addButton"
+                        onClick={() => addToWatchList()}
+                      />
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="otherContainer">
+            <div className="tagsTitleContainer">
+              <p className="tagsTitleContent">Tags:</p>
+              <div className="coinTagsSpace">
+                {coin.tags.map((item, index) => {
+                  return (
+                    <div key={index}>
+                      <p className="coinTagsContent">{item}, </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            <div className="links"></div>
           </div>
         </div>
       ) : (

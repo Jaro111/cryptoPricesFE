@@ -23,7 +23,7 @@ export const DropChain = (props) => {
       onClick={handleDropEnter}
       onMouseLeave={handleDropLeave}
     >
-      <button>
+      <button className="dropCahinBtn">
         &emsp;
         {">"}
         &emsp;
