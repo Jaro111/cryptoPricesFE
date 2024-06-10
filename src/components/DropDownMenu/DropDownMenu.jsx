@@ -12,17 +12,19 @@ export const DropMenu = (props) => {
     setDropdownVisible(false);
   };
   return (
-    <div
-      className="menu"
-      onClick={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <button onClick={props.clickDrop}>
-        &emsp;
-        {">"}
-        &emsp;
-      </button>
-      {isDropdownVisible && <DropList clickList={props.clickList} />}
+    <div className="menuWrapper">
+      <div
+        className="dropMenu"
+        onClick={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <button className="dropCahinBtn" onClick={props.clickDrop}>
+          &emsp;
+          {">"}
+          &emsp;
+        </button>
+        {isDropdownVisible && <DropList clickList={props.clickList} />}
+      </div>
     </div>
   );
 };

@@ -1,30 +1,32 @@
 .coinDataSpace {
-  margin-top: 50px;
+  margin: 50px 0 50px;
   width: 90%;
-  height: 80%;
+  height: fit-content;
   border: 1px solid white;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: white;
   color: black;
+  font-size: 20px;
 }
 
 .dataContainer {
-  width: 70%;
-  height: 95%;
-  border: 1px solid black;
+  width: 90%;
+  height: 100%;
+  /* border: 1px solid black; */
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  gap: 50px;
   flex-direction: column;
   box-sizing: border-box;
 }
 .coinNav {
   width: 80%;
   height: auto;
-  border: 1px solid red;
+  /* border: 1px solid green; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +34,7 @@
   box-sizing: border-box;
 }
 .logoSpace {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: 500px;
   height: 80px;
   display: flex;
@@ -76,14 +78,159 @@
   padding: 0;
 }
 
+.coinDescriptionContainer {
+  width: 90%;
+  height: 40%;
+  /* border: 1px solid red; */
+}
+
 /* ---------------------------------CONTENT DATA ------------------------ */
 .detailContainer {
-  width: 90%;
-  height: 85%;
+  width: 80%;
+  height: fit-content;
+  /* border: 2px solid red; */
+  box-sizing: border-box;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-direction: row;
+  box-sizing: border-box;
+  border: 1px solid RED;
+  margin: 0 0 20px 0;
+}
 
+.listDetailContainer {
+  width: 45%;
+  height: 95%;
+  margin: 10px 0;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
   box-sizing: border-box;
 }
-.coinDetails {
+
+.listDetailQContainer {
+  width: 49%;
+  height: 98%;
+}
+
+.listDetailAContainer {
+  width: 49%;
+  height: 98%;
+
+  display: flex;
+  justify-content: flex-start;
+}
+.listCoinDetail {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.listCoinDetailItem {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  gap: 20px;
+}
+
+.listCoinDetailItemContainerQ {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 40%;
+}
+
+.listCoinDetailItemContainerA {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 40%;
+}
+
+.listCoinDetailItemContentQ,
+.listCoinDetailItemContentA {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.listCoinDetailItemContentA {
+  font-weight: 600;
+}
+
+.listCoinDetailItemContentQ {
+  border-bottom: 1px solid grey;
+}
+
+.addButton {
+  background-color: black;
+  color: greenyellow;
+  border-radius: 5px;
+}
+
+.addButton:hover {
+  background-color: greenyellow;
+  color: red;
+}
+
+.coinTagsContent {
+  width: 100%;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.coinDescriptionContainer {
+  width: 100%;
+  height: fit-content;
+}
+
+/* ------------------- OTHER ----------------- */
+.otherContainer {
+  width: 80%;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.tagsTitleContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.tagsTitleContent {
+  font-size: 15px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.coinTagsSpace {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+  font-weight: 600;
+}
+.coinTagsContent {
+  margin: 0;
+  padding: 0;
+}
+
+/* .coinDetails {
   width: 96%;
   height: 40%;
 
@@ -106,7 +253,7 @@
 /* .coinDetailsContainer {
   
 } */
-.coinDetailsContentQ {
+/* .coinDetailsContentQ {
   margin: 0;
   padding: 0;
   font-size: 15px;
@@ -151,4 +298,4 @@
   flex-direction: column;
   height: fit-content;
   width: 50px;
-}
+/* } */

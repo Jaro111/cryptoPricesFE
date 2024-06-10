@@ -2,6 +2,21 @@
   position: relative;
 }
 
+.portfolioNameButton,
+.portfolioListButton {
+  height: 40px;
+  width: fit-content;
+  background-color: black;
+  border: 2px solid rgb(243, 243, 243);
+  color: greenyellow;
+  font-size: 25px;
+  border-radius: 5px;
+}
+
+.portfolioListButton {
+  height: 40px;
+}
+
 .portfolioMenuButtons {
   margin-left: 10px;
   width: fit-content;

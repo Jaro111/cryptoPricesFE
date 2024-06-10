@@ -17,13 +17,21 @@ export const PortfolioBar = (props) => {
       onMouseLeave={() => setIsPortfolioDropVisible(false)}
     >
       <div className="portfolioMenuButtons">
-        <button onClick={props.showUpdatePortfolioModal}>
+        <button
+          className="portfolioNameButton"
+          onClick={props.showUpdatePortfolioModal}
+        >
           {Object.keys(props.mainPortfolio).length > 0
             ? props.mainPortfolio.title
             : props.userPortfolio[0].title}
         </button>
         {props.userPortfolio.length > 1 && (
-          <button onClick={() => setIsPortfolioDropVisible(true)}>{">"}</button>
+          <button
+            className="portfolioListButton"
+            onClick={() => setIsPortfolioDropVisible(true)}
+          >
+            {">"}
+          </button>
         )}
       </div>
 
