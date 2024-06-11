@@ -152,7 +152,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
+  flex-direction: row;
   width: 40%;
 }
 
@@ -168,6 +168,11 @@
 
 .listCoinDetailItemContentQ {
   border-bottom: 1px solid grey;
+}
+
+.listCoinDetailItemContainerAddress {
+  font-size: 13px;
+  margin: 0 5px;
 }
 
 .addButton {
@@ -228,6 +233,10 @@
 .coinTagsContent {
   margin: 0;
   padding: 0;
+}
+.copySingleIcon {
+  background-color: white;
+  border: none;
 }
 
 /* .coinDetails {
