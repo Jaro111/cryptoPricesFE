@@ -3,6 +3,8 @@ import { getSingleCoin } from "../../utils/utils";
 import { useState, useContext } from "react";
 import { alertContext } from "../../common/contexts";
 import { priceFunc } from "../../priceFunc";
+import { copy } from "../../common/functionsJs";
+import { clickCopyStyle } from "../../common/functionsJs";
 import { getPortfolio } from "../../utilsUser/portfolio/portfolioFunctions";
 import { addCoinToPortfolio } from "../../utilsUser/coin/coinFunctions";
 import "./CoinPageData.css";
@@ -12,6 +14,7 @@ import { AddCoinPortModal } from "../AddCoinPortModal/AddCoinPortModal";
 import { cutUrl } from "../../common/functionsJs";
 import { IoWallet } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
+import { FaCopy } from "react-icons/fa";
 
 export const CoinPageData = (props) => {
   const id = props.id;
@@ -22,14 +25,11 @@ export const CoinPageData = (props) => {
   const setAlertMessage = useContext(alertContext).setAlertMessage;
   const [isAddPortModalVisible, setIsAddPortModalVisible] = useState(false);
   const [portfolioList, setPortfolioList] = useState([]);
+  const [colorCopy, setColorCopy] = useState("black");
   const notLogMessageP =
     "If You wold like to create a Portfolio You need to Log In. If You don't have an account You Can Sign In. It takes 1 minute 😉";
   const notLogMessageW =
     "If You wold like to create a Watch List You need to Log In. If You don't have an account You Can Sign In. It takes 1 minute 😉";
-
-  useEffect(() => {
-    singleCoinData(id);
-  }, [id]);
 
   const singleCoinData = async (id) => {
     const data = await getSingleCoin(id);
@@ -62,6 +62,15 @@ export const CoinPageData = (props) => {
       console.log("add to Watchlist");
     }
   };
+
+  const copyFunc = () => {
+    copy(coin.meta.contractAdress[0].contract_address);
+    clickCopyStyle(setColorCopy, "greenyellow", "black");
+  };
+
+  useEffect(() => {
+    singleCoinData(id);
+  }, [id]);
 
   return (
     <div className="coinDataSpace">
@@ -192,18 +201,35 @@ export const CoinPageData = (props) => {
                   </div>
                 </li>
                 <li className="listCoinDetailItem">
-                  <div className="listCoinDetailItemContainerQ">
-                    {coin.meta.contractAdress.length > 0 ? (
-                      <p className="listCoinDetailItemContentQ">
-                        Contract address:
-                      </p>
-                    ) : null}
-                  </div>
-                  <div className="listCoinDetailItemContainerA">
-                    {coin.meta.contractAdress.length > 0 ? (
-                      <DropChain coin={coin} />
-                    ) : null}
-                  </div>
+                  {coin.meta.contractAdress.length > 0 ? (
+                    <>
+                      <div className="listCoinDetailItemContainerQ">
+                        <p className="listCoinDetailItemContentQ">
+                          Contract address:
+                        </p>
+                      </div>
+                      {coin.meta.contractAdress.length > 1 ? (
+                        <div className="listCoinDetailItemContainerA">
+                          <DropChain coin={coin} />
+                        </div>
+                      ) : (
+                        <div className="listCoinDetailItemContainerA">
+                          <p className="listCoinDetailItemContainerAddress">
+                            {coin.meta.contractAdress[0].platform.coin.symbol}
+                          </p>
+                          <p className="listCoinDetailItemContainerAddress">
+                            {coin.meta.contractAdress[0].contract_address}
+                          </p>
+                          <button className="copySingleIcon">
+                            <FaCopy
+                              style={{ color: colorCopy }}
+                              onClick={() => copyFunc()}
+                            />
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  ) : null}
                 </li>
                 <li className="listCoinDetailItem">
                   <div className="listCoinDetailItemContainerQ">
